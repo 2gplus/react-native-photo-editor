@@ -7,7 +7,7 @@ export interface PhotoEditorProps {
     colors?: string[]
     stickers?: string[]
     hiddenControls?: ('text' | 'clear' | 'draw' | 'save' | 'share' | 'sticker' | 'crop')[]
-
+    customStickers?:string[];
     onDone?: (imagePath: string) => void
     onCancel?: (resultCode: number) => void
 }

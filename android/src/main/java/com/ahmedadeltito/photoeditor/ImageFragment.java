@@ -30,20 +30,29 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
         super.onCreate(savedInstanceState);
         photoEditorActivity = (PhotoEditorActivity) getActivity();
 
-        TypedArray images = getResources().obtainTypedArray(R.array.photo_editor_photos);
+//        TypedArray images = getResources().obtainTypedArray(R.array.photo_editor_photos);
+//
+//        ArrayList<Integer> stickers = (ArrayList<Integer>) getActivity().getIntent().getExtras().getSerializable("stickers");
+//
+//        if (stickers != null && stickers.size() > 0) {
+//            stickerBitmaps = new ArrayList<>();
+//
+//            for (int i = 0;i < stickers.size();i++) {
+//                stickerBitmaps.add(decodeSampledBitmapFromResource(getActivity().getResources(), stickers.get(i), 120, 120));
+//            }
+//        } else {
+//            stickerBitmaps = new ArrayList<>();
+//            for (int i = 0; i < images.length(); i++) {
+//                stickerBitmaps.add(decodeSampledBitmapFromResource(photoEditorActivity.getResources(), images.getResourceId(i, -1), 120, 120));
+//            }
+//        }
 
-        ArrayList<Integer> stickers = (ArrayList<Integer>) getActivity().getIntent().getExtras().getSerializable("stickers");
-
-        if (stickers != null && stickers.size() > 0) {
-            stickerBitmaps = new ArrayList<>();
-
-            for (int i = 0;i < stickers.size();i++) {
-                stickerBitmaps.add(decodeSampledBitmapFromResource(getActivity().getResources(), stickers.get(i), 120, 120));
-            }
-        } else {
-            stickerBitmaps = new ArrayList<>();
-            for (int i = 0; i < images.length(); i++) {
-                stickerBitmaps.add(decodeSampledBitmapFromResource(photoEditorActivity.getResources(), images.getResourceId(i, -1), 120, 120));
+        ArrayList<String> customStickers = (ArrayList<String>) getActivity().getIntent().getExtras().getSerializable("customStickers");
+        if(customStickers != null && customStickers.size() > 0)
+        {
+            for (int i = 0; i < customStickers.size(); i++) {
+                Bitmap bitmap = BitmapFactory.decodeFile(customStickers.get(i));
+                stickerBitmaps.add(bitmap);
             }
         }
     }

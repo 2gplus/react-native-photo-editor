@@ -92,12 +92,19 @@ public class RNPhotoEditorModule extends ReactContextBaseJavaModule {
       colorPickerColors.add(Color.parseColor(colors.getString(i)));
     }
 
+    //Process custom stickers
+    ReadableArray customStickers = props.getArray("customStickers");
+    ArrayList<String> customStickerIntent = new ArrayList<>();
+    for (int i = 0; i < customStickers.size(); i++) {
+      customStickerIntent.add(customStickers.getString(i));
+    }
 
     Intent intent = new Intent(getCurrentActivity(), PhotoEditorActivity.class);
     intent.putExtra("selectedImagePath", path);
     intent.putExtra("colorPickerColors", colorPickerColors);
     intent.putExtra("hiddenControls", hiddenControlsIntent);
     intent.putExtra("stickers", stickersIntent);
+    intent.putExtra("customStickers",customStickerIntent);
 
 
     mCancelCallback = onCancel;
