@@ -40,7 +40,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return imageBitmaps.size();
+          return imageBitmaps != null ?  imageBitmaps.size() : 0;
     }
 
     public void setOnImageClickListener(OnImageClickListener onImageClickListener) {

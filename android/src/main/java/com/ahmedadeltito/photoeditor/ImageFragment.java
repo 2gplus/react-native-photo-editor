@@ -48,13 +48,14 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
 //        }
 
         ArrayList<String> customStickers = (ArrayList<String>) getActivity().getIntent().getExtras().getSerializable("customStickers");
-        if(customStickers != null && customStickers.size() > 0)
-        {
-            for (int i = 0; i < customStickers.size(); i++) {
-                Bitmap bitmap = BitmapFactory.decodeFile(customStickers.get(i));
-                stickerBitmaps.add(bitmap);
-            }
-        }
+                if(customStickers != null && customStickers.size() > 0)
+                {
+                    stickerBitmaps = new ArrayList<>();
+                    for (int i = 0; i < customStickers.size(); i++) {
+                        Bitmap bitmap = BitmapFactory.decodeFile(customStickers.get(i));
+                        stickerBitmaps.add(bitmap);
+                    }
+                }
     }
 
     @Nullable
